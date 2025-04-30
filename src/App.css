@@ -36,3 +36,51 @@
     transform: rotate(360deg);
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Для плавності скролу та фонового ефекту */
+  background: #0a1a3c;
+}
+
+/* Кастомний скролбар для Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 14px;
+  background: rgba(24, 28, 36, 0.13);
+  border-radius: 10px;
+  box-shadow: 0 0 0 1.5px #00ffe722 inset;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #00e0d6cc 0%, #5b8cffcc 100%);
+  border-radius: 10px;
+  border: 2px solid #00e0d655;
+  box-shadow:
+    0 0 18px 2px #00e0d644,
+    0 0 0 2px #5b8cff22 inset,
+    0 1.5px 8px 0 #5b8cff44 inset;
+  transition: background 0.22s, box-shadow 0.22s, border 0.22s;
+  opacity: 0.92;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #00e0d6 0%, #5b8cff 100%);
+  box-shadow:
+    0 0 32px 8px #00e0d6cc,
+    0 0 0 2.5px #5b8cff99 inset,
+    0 2px 12px 0 #5b8cffcc inset;
+  border: 2px solid #00e0d6;
+  opacity: 1;
+}
+::-webkit-scrollbar-track {
+  background: rgba(24, 28, 36, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 0 0 1.5px #00e0d622 inset;
+}
+
+/* Для Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00e0d6cc #181c24;
+}

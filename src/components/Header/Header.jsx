@@ -19,14 +19,14 @@ const handleSmoothScroll = (e, href) => {
   }
 };
 
-const Header = () => (
+const Header = ({ activeSection }) => (
   <header className="header">
     <nav className="header__nav">
       {navLinks.map(link => (
         <a
           key={link.href}
           href={link.href}
-          className="header__link"
+          className={`header__link${activeSection === link.href.replace('#', '') ? ' active' : ''}`}
           onClick={e => handleSmoothScroll(e, link.href)}
         >
           {link.label}
