@@ -1,0 +1,52 @@
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  z-index: 2147483647;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00ffe7 60%, #5b8cff 100%);
+  box-shadow:
+    0 0 16px 6px #00ffe7cc,
+    0 0 32px 12px #5b8cff55;
+  mix-blend-mode: lighten;
+  transform: translate3d(-50%, -50%, 0);
+  transition: box-shadow 0.2s, background 0.2s;
+  will-change: transform;
+  opacity: 1 !important;
+  animation: cursorPulse 1.6s infinite alternate, cursorBreath 2.2s infinite ease-in-out;
+}
+
+@keyframes cursorPulse {
+  0% {
+    box-shadow:
+      0 0 16px 6px #00ffe7cc,
+      0 0 32px 12px #5b8cff55;
+    opacity: 0.95;
+  }
+  100% {
+    box-shadow:
+      0 0 32px 12px #00ffe7cc,
+      0 0 48px 18px #5b8cff99;
+    opacity: 1;
+  }
+}
+
+@keyframes cursorBreath {
+  0% { transform: translate3d(-50%, -50%, 0) scale(1); }
+  50% { transform: translate3d(-50%, -50%, 0) scale(1.18); }
+  100% { transform: translate3d(-50%, -50%, 0) scale(1); }
+}
+
+.cursor-particle {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00ffe7 60%, #5b8cff 100%);
+  box-shadow: 0 0 8px 2px #00ffe7cc, 0 0 16px 4px #5b8cff55;
+  z-index: 9998;
+  will-change: transform, opacity, width, height;
+  transition: opacity 0.2s;
+} 

@@ -89,13 +89,12 @@ const Projects = () => {
         <Tabs tabs={TABS} activeTab={activeTab} onChange={setActiveTab} />
         <motion.div
           className="projects__list"
-          initial={false}
-          animate={{ opacity: fade ? 1 : 0, y: fade ? 0 : 20 }}
-          transition={{ duration: 0.22, ease: [0.77, 0, 0.18, 1] }}
+          layout
         >
           {filtered.map((project, idx) => (
             <motion.div
               key={project.id}
+              layout
               style={{ width: '100%' }}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
