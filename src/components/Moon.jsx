@@ -15,12 +15,9 @@ function MoonModel(props) {
 
 export default function Moon() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef();
 
   useEffect(() => {
-    // Визначаємо мобільний пристрій
-    setIsMobile(window.innerWidth < 768);
     // Intersection Observer для lazy load
     const observer = new window.IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
@@ -32,9 +29,7 @@ export default function Moon() {
 
   return (
     <div ref={containerRef} style={{ width: '100%', height: 320, margin: '140px 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      {isMobile ? (
-        <img src="/moon-preview.webp" alt="Moon preview" style={{ maxHeight: 240, maxWidth: '100%', borderRadius: '50%', boxShadow: '0 0 32px #222' }} />
-      ) : isVisible ? (
+      {isVisible ? (
         <Suspense fallback={<Loader />}> 
           <Canvas shadows camera={{ position: [0, 0, 5], fov: 40 }}>
             <ambientLight intensity={0.7} />

@@ -15,12 +15,10 @@ function CosmoModel(props) {
 
 export default function Cosmo() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [canvasLoaded, setCanvasLoaded] = useState(false);
   const containerRef = useRef();
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
     const observer = new window.IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
       { threshold: 0.1 }
@@ -31,10 +29,8 @@ export default function Cosmo() {
 
   return (
     <div ref={containerRef} style={{ width: '100%', height: 240, margin: '140px 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      {isMobile ? (
-        <img src="/cosmo-preview.webp" alt="Cosmo preview" style={{ maxHeight: 200, maxWidth: '100%', borderRadius: '24px', boxShadow: '0 0 32px #222' }} />
-      ) : isVisible ? (
-        <Suspense fallback={<Loader />}>
+      {isVisible ? (
+        <Suspense fallback={<Loader />}> 
           <div style={{ width: '100%', height: '100%', transition: 'opacity 0.7s', opacity: canvasLoaded ? 1 : 0 }}>
             <Canvas
               shadows
