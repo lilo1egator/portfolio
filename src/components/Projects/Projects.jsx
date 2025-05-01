@@ -1,7 +1,7 @@
 import './Projects.scss';
 import ProjectCard from './ProjectCard';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Tabs from './Tabs';
 
 const TABS = [
@@ -42,21 +42,7 @@ const projects = [
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState('all');
-  const [displayedTab, setDisplayedTab] = useState('all');
-  const [fade, setFade] = useState(true);
-
-  // Fade-out, потім змінюємо таб, потім fade-in
-  useEffect(() => {
-    if (activeTab === displayedTab) return;
-    setFade(false);
-    const timeout = setTimeout(() => {
-      setDisplayedTab(activeTab);
-      setFade(true);
-    }, 220); // 220ms fade-out
-    return () => clearTimeout(timeout);
-  }, [activeTab, displayedTab]);
-
-  const filtered = displayedTab === 'all' ? projects : projects.filter(p => p.type === displayedTab);
+  const filtered = activeTab === 'all' ? projects : projects.filter(p => p.type === activeTab);
 
   return (
     <section className="projects" id="projects">
@@ -91,19 +77,22 @@ const Projects = () => {
           className="projects__list"
           layout
         >
-          {filtered.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              layout
-              style={{ width: '100%' }}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.7 }}
-              transition={{ duration: 0.7, delay: 0.12 * idx, ease: [0.77, 0, 0.18, 1] }}
-            >
-              <ProjectCard {...project} />
-            </motion.div>
-          ))}
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project, idx) => (
+              <motion.div
+                key={project.id}
+                layout
+                layoutId={project.id}
+                style={{ width: '100%' }}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 40 }}
+                transition={{ duration: 0.5, delay: 0.08 * idx, ease: [0.77, 0, 0.18, 1] }}
+              >
+                <ProjectCard {...project} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>

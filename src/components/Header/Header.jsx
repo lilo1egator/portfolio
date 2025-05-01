@@ -1,7 +1,6 @@
 import './Header.scss';
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#projects', label: 'Projects' },
   { href: '#skills', label: 'Skills' },
