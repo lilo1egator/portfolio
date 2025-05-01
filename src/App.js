@@ -5,7 +5,9 @@ import About from './components/About/About';
 import Projects from './components/Projects/Projects';
 import Skills from './components/Skills/Skills';
 import Roadmap from './components/Roadmap/Roadmap';
-import CustomCursor from './components/CustomCursor';
+import CustomCursor from './components/Cursor/CustomCursor';
+import ContactForm from './components/Form/ContactForm';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
         <Projects />
         <Roadmap />
         <Skills />
+        <ContactForm />
       </div>
+      <Footer />
     </>
   );
 }

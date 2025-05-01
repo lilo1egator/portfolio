@@ -19,6 +19,7 @@ const projects = [
     site: 'https://weather-app-demo.site',
     img: '', // заглушка
     type: 'webapp',
+    technologies: ['React', 'OpenWeatherMap', 'SCSS'],
   },
   {
     id: 'portfolio-website',
@@ -28,6 +29,7 @@ const projects = [
     site: 'https://your-portfolio.site',
     img: '', // заглушка
     type: 'website',
+    technologies: ['React', 'SCSS'],
   },
   {
     id: 'task-manager',
@@ -37,6 +39,7 @@ const projects = [
     site: 'https://task-manager-demo.site',
     img: '', // заглушка
     type: 'webapp',
+    technologies: ['React', 'Redux', 'SCSS'],
   },
 ];
 
@@ -89,7 +92,7 @@ const Projects = () => {
                 exit={{ opacity: 0, y: 40 }}
                 transition={{ duration: 0.5, delay: 0.08 * idx, ease: [0.77, 0, 0.18, 1] }}
               >
-                <ProjectCard {...project} />
+                <ProjectCard {...project} technologies={project.technologies} />
               </motion.div>
             ))}
           </AnimatePresence>

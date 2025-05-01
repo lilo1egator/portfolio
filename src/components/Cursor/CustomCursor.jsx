@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import './CustomCursor.css';
+import './CustomCursor.scss';
 
 const PARTICLE_LIFETIME = 600; // ms
 const PARTICLE_COUNT = 3; // менше частинок за рух

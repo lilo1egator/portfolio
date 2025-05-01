@@ -1,0 +1,65 @@
+$cursor-size: 22px;
+$cursor-bg-start: #00ffe7;
+$cursor-bg-end: #5b8cff;
+$cursor-shadow1: #00ffe7cc;
+$cursor-shadow2: #5b8cff55;
+$cursor-shadow1-pulse: #00ffe7cc;
+$cursor-shadow2-pulse: #5b8cff99;
+$cursor-particle-shadow1: #00ffe7cc;
+$cursor-particle-shadow2: #5b8cff55;
+$cursor-z: 2147483647;
+$cursor-z-particle: 9998;
+$cursor-transition: 0.2s;
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $cursor-size;
+  height: $cursor-size;
+  pointer-events: none;
+  z-index: $cursor-z;
+  border-radius: 50%;
+  background: radial-gradient(circle, $cursor-bg-start 60%, $cursor-bg-end 100%);
+  box-shadow:
+    0 0 16px 6px $cursor-shadow1,
+    0 0 32px 12px $cursor-shadow2;
+  mix-blend-mode: lighten;
+  transform: translate3d(-50%, -50%, 0);
+  transition: box-shadow $cursor-transition, background $cursor-transition;
+  will-change: transform;
+  opacity: 1 !important;
+  animation: cursorPulse 1.6s infinite alternate, cursorBreath 2.2s infinite ease-in-out;
+}
+
+.custom-cursor-particle {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, $cursor-bg-start 60%, $cursor-bg-end 100%);
+  box-shadow: 0 0 8px 2px $cursor-particle-shadow1, 0 0 16px 4px $cursor-particle-shadow2;
+  z-index: $cursor-z-particle;
+  will-change: transform, opacity, width, height;
+  transition: opacity $cursor-transition;
+}
+
+@keyframes cursorPulse {
+  0% {
+    box-shadow:
+      0 0 16px 6px $cursor-shadow1,
+      0 0 32px 12px $cursor-shadow2;
+    opacity: 0.95;
+  }
+  100% {
+    box-shadow:
+      0 0 32px 12px $cursor-shadow1-pulse,
+      0 0 48px 18px $cursor-shadow2-pulse;
+    opacity: 1;
+  }
+}
+
+@keyframes cursorBreath {
+  0% { transform: translate3d(-50%, -50%, 0) scale(1); }
+  50% { transform: translate3d(-50%, -50%, 0) scale(1.18); }
+  100% { transform: translate3d(-50%, -50%, 0) scale(1); }
+} 

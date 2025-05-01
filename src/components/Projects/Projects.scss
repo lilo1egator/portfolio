@@ -237,6 +237,39 @@
     text-align: center;
   }
 
+  &__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    margin-top: -6px;
+    z-index: 2;
+  }
+
+  &__tech-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    color: #1e3a8a;
+    background: #e0e6ed;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px #00ffe733;
+    padding: 5px 7px;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    border: 1.5px solid #bfc9d1;
+    cursor: default;
+    position: relative;
+  }
+  &__tech-icon:hover {
+    color: #00ffe7;
+    background: #fff;
+    box-shadow: 0 2px 12px #00ffe799;
+    border-color: #5b8cff;
+  }
+
   &__actions {
     display: flex;
     flex-direction: row;

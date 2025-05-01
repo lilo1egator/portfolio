@@ -2,10 +2,33 @@ import { FaGithub } from 'react-icons/fa';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
+import { SiReact, SiRedux, SiSass, SiHtml5, SiCss3, SiJavascript, SiTypescript, SiGit, SiGithub, SiFramer, SiBootstrap, SiTailwindcss, SiNodedotjs, SiFirebase, SiDocker, SiNpm, SiGulp, SiFigma } from 'react-icons/si';
 
 const MAX_ROTATE = 9; // градусів (збільшено для більшого ефекту)
 
-const ProjectCard = ({ title, desc, link, site, img }) => {
+const techIcons = {
+  React: SiReact,
+  Redux: SiRedux,
+  SCSS: SiSass,
+  HTML5: SiHtml5,
+  CSS3: SiCss3,
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  Git: SiGit,
+  GitHub: SiGithub,
+  'Framer Motion': SiFramer,
+  Bootstrap: SiBootstrap,
+  'Tailwind CSS': SiTailwindcss,
+  'Node.js': SiNodedotjs,
+  Firebase: SiFirebase,
+  Docker: SiDocker,
+  npm: SiNpm,
+  Gulp: SiGulp,
+  Figma: SiFigma,
+  OpenWeatherMap: SiJavascript, // fallback icon
+};
+
+const ProjectCard = ({ title, desc, link, site, img, technologies = [] }) => {
   const cardRef = useRef(null);
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
@@ -75,6 +98,18 @@ const ProjectCard = ({ title, desc, link, site, img }) => {
       <div className="project-card__content">
         <div className="project-card__title">{title}</div>
         <div className="project-card__desc">{desc}</div>
+        {technologies.length > 0 && (
+          <div className="project-card__tech">
+            {technologies.map((tech) => {
+              const Icon = techIcons[tech] || SiJavascript;
+              return (
+                <span className="project-card__tech-icon" key={tech} title={tech}>
+                  <Icon />
+                </span>
+              );
+            })}
+          </div>
+        )}
         <div className="project-card__actions">
           {site && (
             <a href={site} className="project-card__btn project-card__btn--site" target="_blank" rel="noopener noreferrer">
