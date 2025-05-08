@@ -12,35 +12,45 @@ const TABS = [
 
 const projects = [
   {
-    id: 'weather-app',
-    title: 'Weather App',
-    desc: 'A modern weather forecast app using React, OpenWeatherMap API, and responsive design.',
-    link: 'https://github.com/your-github/weather-app',
-    site: 'https://weather-app-demo.site',
-    img: '', // заглушка
+    id: 'marvel-app',
+    title: 'Marvel',
+    desc: 'A modern web application built with React and SCSS. Features routing and component-based architecture.',
+    link: 'https://github.com/lilo1egator/marvel',
+    site: 'https://github.com/lilo1egator/marvel',
+    img: '/assets/projects/marvel.jpg',
     type: 'webapp',
-    technologies: ['React', 'OpenWeatherMap', 'SCSS'],
+    technologies: ['React', 'React Router', 'SCSS', 'PropTypes'],
   },
   {
-    id: 'portfolio-website',
-    title: 'Portfolio Website',
-    desc: 'Personal portfolio built with React, SCSS modules, and smooth animations.',
-    link: 'https://github.com/your-github/portfolio',
-    site: 'https://your-portfolio.site',
-    img: '', // заглушка
+      id: 'pulse',
+      title: 'Pulse',
+      desc: 'A modern landing page for heart rate monitors with animated counters, product catalog, consultation forms, and micro-animations. Built with HTML, SCSS, and jQuery.',
+      link: 'https://github.com/lilo1egator/pulse',
+      site: 'https://pulse-tan.vercel.app/',
+      img: '/assets/projects/pulse.jpg',
+      type: 'website',
+      technologies: ['HTML', 'SCSS', 'jQuery', 'Gulp'],
+  },
+  {
+    id: 'typego',
+    title: 'TypeGo',
+    desc: 'A modern typing speed trainer app with real-time stats, history, dark/light themes, and multilingual support (EN/UA). Built with React, Express, and SCSS.',
+    link: 'https://github.com/lilo1egator/TypeGo',
+    site: 'https://type-go.vercel.app/',
+    img: '/assets/projects/typego.jpg',
+    type: 'webapp',
+    technologies: ['React', 'Express', 'SCSS'],
+  },
+  {
+    id: 'food',
+    title: 'FoodJS Landing',
+    desc: 'A modern and responsive landing page for the FoodJS project, showcasing features and design.',
+    link: 'https://github.com/lilo1egator/Food',
+    site: 'https://food-phi-one.vercel.app/',
+    img: '/assets/projects/food.jpg',
     type: 'website',
-    technologies: ['React', 'SCSS'],
-  },
-  {
-    id: 'task-manager',
-    title: 'Task Manager',
-    desc: 'A productivity tool for managing daily tasks, built with React and Redux.',
-    link: 'https://github.com/your-github/task-manager',
-    site: 'https://task-manager-demo.site',
-    img: '', // заглушка
-    type: 'webapp',
-    technologies: ['React', 'Redux', 'SCSS'],
-  },
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+  }
 ];
 
 const Projects = () => {

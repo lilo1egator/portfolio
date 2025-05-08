@@ -29,7 +29,8 @@ const ContactForm = () => {
       return;
     }
     setSubmitted(true);
-    
+    setForm({ name: '', email: '', message: '' });
+    setTimeout(() => setSubmitted(false), 4000); // success message hides after 4s
   };
 
   return (
@@ -37,64 +38,70 @@ const ContactForm = () => {
       <div className="contact-form__container">
         <h2 className="contact-form__title">Contact me</h2>
         <p className="contact-form__desc">I will get back to you soon.</p>
-        {submitted ? (
-          <div className="contact-form__success">Thank you for your message!</div>
-        ) : (
-          <form className="contact-form__form" onSubmit={handleSubmit} autoComplete="off" noValidate>
-            <label className="contact-form__label sr-only" htmlFor="name">Name</label>
-            <div className={`contact-form__input-wrap${errors.name ? ' contact-form__input-wrap--error' : ''}`}>
-              <FaUser className="contact-form__icon" />
-              <input
-                type="text"
-                name="name"
-                id="name"
-                className="contact-form__input"
-                placeholder="Your name"
-                value={form.name}
-                onChange={handleChange}
-                aria-label="Your name"
-                autoComplete="off"
-                required
-              />
-            </div>
+        <form className="contact-form__form" onSubmit={handleSubmit} autoComplete="off" noValidate>
+          <label className="contact-form__label sr-only" htmlFor="name">Name</label>
+          <div className={`contact-form__input-wrap${errors.name ? ' contact-form__input-wrap--error' : ''}`}>
+            <FaUser className="contact-form__icon" />
+            <input
+              type="text"
+              name="name"
+              id="name"
+              className="contact-form__input"
+              placeholder="Your name"
+              value={form.name}
+              onChange={handleChange}
+              aria-label="Your name"
+              autoComplete="off"
+              required
+              disabled={submitted}
+            />
+          </div>
 
-            <label className="contact-form__label sr-only" htmlFor="email">Email</label>
-            <div className={`contact-form__input-wrap${errors.email ? ' contact-form__input-wrap--error' : ''}`}>
-              <FaEnvelope className="contact-form__icon" />
-              <input
-                type="email"
-                name="email"
-                id="email"
-                className="contact-form__input"
-                placeholder="Your email"
-                value={form.email}
-                onChange={handleChange}
-                aria-label="Your email"
-                autoComplete="off"
-                required
-              />
-            </div>
+          <label className="contact-form__label sr-only" htmlFor="email">Email</label>
+          <div className={`contact-form__input-wrap${errors.email ? ' contact-form__input-wrap--error' : ''}`}>
+            <FaEnvelope className="contact-form__icon" />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              className="contact-form__input"
+              placeholder="Your email"
+              value={form.email}
+              onChange={handleChange}
+              aria-label="Your email"
+              autoComplete="off"
+              required
+              disabled={submitted}
+            />
+          </div>
 
-            <label className="contact-form__label sr-only" htmlFor="message">Message</label>
-            <div className={`contact-form__input-wrap contact-form__input-wrap--textarea${errors.message ? ' contact-form__input-wrap--error' : ''}`}>
-              <FaRegCommentDots className="contact-form__icon" />
-              <textarea
-                name="message"
-                id="message"
-                className="contact-form__textarea"
-                placeholder="Your message"
-                value={form.message}
-                onChange={handleChange}
-                aria-label="Your message"
-                required
-              />
-            </div>
+          <label className="contact-form__label sr-only" htmlFor="message">Message</label>
+          <div className={`contact-form__input-wrap contact-form__input-wrap--textarea${errors.message ? ' contact-form__input-wrap--error' : ''}`}>
+            <FaRegCommentDots className="contact-form__icon" />
+            <textarea
+              name="message"
+              id="message"
+              className="contact-form__textarea"
+              placeholder="Your message"
+              value={form.message}
+              onChange={handleChange}
+              aria-label="Your message"
+              required
+              disabled={submitted}
+            />
+          </div>
 
-            <button type="submit" className="contact-form__button">
-              <FaPaperPlane style={{marginRight: 8, marginBottom: -2}} /> Send
-            </button>
-          </form>
-        )}
+          <button type="submit" className="contact-form__button">
+            <FaPaperPlane style={{marginRight: 8, marginBottom: -2}} /> Send
+          </button>
+          <div
+            className={`contact-form__success${submitted ? ' contact-form__success--visible' : ''}`}
+            style={{marginTop: 16}}
+          >
+            <span className="contact-form__success-icon" aria-hidden="true">✔</span>
+            Thank you for your message!
+          </div>
+        </form>
       </div>
     </section>
   );

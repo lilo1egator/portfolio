@@ -1,13 +1,10 @@
 import './About.scss';
 import { useState, useEffect, useRef } from 'react';
-import { FaGithub, FaLinkedin, FaTelegram } from 'react-icons/fa';
+import SocialLinks from '../SocialLinks';
 
 const TYPED_TEXT = 'FRONTEND DEVELOPER';
-const NAME = 'Oleh Zelenskiy';
+const NAME = 'Oleh Zelenskyi';
 const RESUME_LINK = '/resume.pdf';
-const GITHUB_LINK = 'https://github.com/your-github';
-const LINKEDIN_LINK = 'https://linkedin.com/in/your-linkedin';
-const TELEGRAM_LINK = 'https://t.me/your-telegram';
 
 
 const About = () => {
@@ -40,17 +37,7 @@ const About = () => {
           <a href={RESUME_LINK} className="hero-intro__btn" target="_blank" rel="noopener noreferrer">
             Resume
           </a>
-          <div className="hero-intro__socials">
-            <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <FaGithub />
-            </a>
-            <a href={LINKEDIN_LINK} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <FaLinkedin />
-            </a>
-            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-              <FaTelegram />
-            </a>
-          </div>
+          <SocialLinks className="hero-intro__socials" />
         </div>
       </div>
     </section>
