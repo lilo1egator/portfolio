@@ -5,40 +5,28 @@ import Cosmo from '../Cosmo';
 
 const roadmapData = [
   {
-    title: 'Position Title',
-    start: 'Jan 2018',
-    end: 'Dec 2018',
-    desc: 'Short description for this step.'
+    title: 'Lutsk NTU Bachelor\'s degree',
+    start: 'Sep 2018',
+    end: 'Mar 2022',
+    desc: 'Faculty of Computer Science.'
   },
   {
-    title: 'Position Title',
-    start: 'Jan 2019',
-    end: 'Dec 2019',
-    desc: 'Short description for this step.'
+    title: 'Web Developer "Vizor"',
+    start: 'Jun 2021',
+    end: 'Feb 2022',
+    desc: 'Creating simple websites, web development admin panel'
   },
   {
-    title: 'Position Title',
-    start: 'Jan 2020',
-    end: 'Dec 2020',
-    desc: 'Short description for this step.'
-  },
-  {
-    title: 'Position Title',
-    start: 'Jan 2021',
-    end: 'Dec 2021',
-    desc: 'Short description for this step.'
-  },
-  {
-    title: 'Position Title',
-    start: 'Jan 2022',
-    end: 'Dec 2022',
-    desc: 'Short description for this step.'
-  },
-  {
-    title: 'Position Title',
-    start: 'Jan 2023',
+    title: 'Lutsk NTU, Master\'s degree',
+    start: 'Sep 2022',
     end: 'Dec 2023',
-    desc: 'Short description for this step.'
+    desc: 'Faculty of Computer Science.'
+  },
+  {
+    title: 'Position Title',
+    start: 'Jun 2022',
+    end: 'Now',
+    desc: 'Frontend developer'
   },
 ];
 
