@@ -1,0 +1,93 @@
+@media (max-width: 1439px) {
+    
+}
+
+@media (max-width: 1200px) {
+    .hero-intro__typewriter--huge {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-intro {
+        &__typewriter--huge{
+            font-size: 2.5rem;
+        }
+
+        &__desc--big {
+            font-size: 1.2rem;
+        }
+    }
+
+    .roadmap {
+        padding: 0px;
+        &__content { flex-direction: column; gap: 20px; }
+        &__glass { padding: 12px; }
+        &__timeline { min-height: auto; }
+        &__svg { left: 16px; transform: none; width: 40px; }
+        &__step { margin-left: 56px; margin-bottom: 32px; position: relative; width: 100%; left: 0; top: auto; }
+        &__card { margin: 0; padding: 12px 14px; }
+        &__card--left, &__card--right { margin: 0; }
+        &__cosmo { flex: 0 0 480px; order: 2; width: 100%; min-width: auto; position: static; }
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-intro {
+        &__typewriter--huge{
+            font-size: 2.1rem;
+        }
+
+        &__desc--big {
+            font-size: 1.1rem;
+        }
+    }
+    .roadmap__card {
+        &_glass {
+            padding: 0;
+        }
+        &__card {
+            min-width: 165px;
+        }
+    }
+
+    .contact-form {
+        &__container {
+            padding: 28px 4px;
+            max-width: 85vw;
+        }
+        &__input-wrap, &__button {
+            width: 95%;
+        }
+    }
+
+    .skills__arrow {
+        width: 95%;
+        margin: 32px auto 48px auto;
+    }
+
+    .custom-cursor {
+        display: none;
+    }
+}
+
+@media (max-width: 580px) {
+    .header {
+         &__burger {
+            display: block;
+        }
+    }
+
+    .hero-intro {
+        &__typewriter--huge {
+            font-size: 1.3rem;
+        }
+        &__desc--big {
+            font-size: 0.8rem;
+        }
+    }
+
+    .roadmap__card {
+        width: 250px;
+    }
+}

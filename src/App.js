@@ -8,6 +8,7 @@ import Roadmap from './components/Roadmap/Roadmap';
 import CustomCursor from './components/Cursor/CustomCursor';
 import ContactForm from './components/Form/ContactForm';
 import Footer from './components/Footer/Footer';
+import './styles/media.scss';
 
 function App() {
   return (
