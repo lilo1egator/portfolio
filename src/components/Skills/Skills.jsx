@@ -1,6 +1,6 @@
 import './Skills.scss';
 import { motion } from 'framer-motion';
-import { SiReact, SiJavascript, SiTypescript, SiSass, SiHtml5, SiCss3, SiGit, SiFigma, SiRedux, SiFramer, SiBootstrap, SiGithub, SiNodedotjs, SiFirebase, SiTailwindcss, SiDocker, SiNpm, SiGulp } from 'react-icons/si';
+import { SiReact, SiJavascript, SiTypescript, SiSass, SiHtml5, SiCss3, SiGit, SiFigma, SiRedux, SiFramer, SiBootstrap, SiGithub, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiDocker, SiNpm, SiGulp } from 'react-icons/si';
 import { HiArrowDown } from 'react-icons/hi';
 
 const skills = [
@@ -17,7 +17,7 @@ const skills = [
   { name: 'Bootstrap', icon: SiBootstrap },
   { name: 'Tailwind CSS', icon: SiTailwindcss },
   { name: 'Node.js', icon: SiNodedotjs },
-  { name: 'Firebase', icon: SiFirebase },
+  { name: 'Next.js', icon: SiNextdotjs },
   { name: 'Docker', icon: SiDocker },
   { name: 'npm', icon: SiNpm },
   { name: 'Gulp', icon: SiGulp },
