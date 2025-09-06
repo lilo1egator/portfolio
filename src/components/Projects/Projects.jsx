@@ -57,7 +57,7 @@ const projects = [
     desc: 'A simple website where users can quickly check the current weather in their location.',
     link: 'https://github.com/lilo1egator/UserWeather',
     site: 'https://user-weather-eight.vercel.app/',
-    img: '/assets/projects/weather.jpg',
+    img: '/assets/projects/photo_2025-09-06_10-51-58.jpg',
     type: 'webapp',
     technologies: ['React', 'Next.js', 'Tailwind'],
   }
