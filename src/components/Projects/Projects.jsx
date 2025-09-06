@@ -29,7 +29,7 @@ const projects = [
       site: 'https://pulse-tan.vercel.app/',
       img: '/assets/projects/pulse.jpg',
       type: 'website',
-      technologies: ['HTML', 'SCSS', 'jQuery', 'Gulp'],
+      technologies: ['HTML5', 'SCSS', 'jQuery', 'Gulp'],
   },
   {
     id: 'typego',
@@ -39,7 +39,7 @@ const projects = [
     site: 'https://type-go.vercel.app/',
     img: '/assets/projects/typego.jpg',
     type: 'webapp',
-    technologies: ['React', 'Express', 'SCSS'],
+    technologies: ['React', 'SCSS'],
   },
   {
     id: 'food',
@@ -49,7 +49,7 @@ const projects = [
     site: 'https://food-phi-one.vercel.app/',
     img: '/assets/projects/food.jpg',
     type: 'website',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
+    technologies: ['HTML5', 'CSS3', 'JavaScript'],
   },
   {
     id: 'weather',
@@ -59,7 +59,7 @@ const projects = [
     site: 'https://user-weather-eight.vercel.app/',
     img: '/assets/projects/weather.jpg',
     type: 'webapp',
-    technologies: ['React', 'Next', 'Tailwind CSS', 'TypeScript'],
+    technologies: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript'],
   }
 ];
 
