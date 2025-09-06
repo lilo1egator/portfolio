@@ -50,6 +50,16 @@ const projects = [
     img: '/assets/projects/food.jpg',
     type: 'website',
     technologies: ['HTML', 'CSS', 'JavaScript'],
+  },
+  {
+    id: 'weather',
+    title: 'User Weather',
+    desc: 'A simple website where users can quickly check the current weather in their location.',
+    link: 'https://github.com/lilo1egator/UserWeather',
+    site: 'https://user-weather-eight.vercel.app/',
+    img: '/assets/projects/weather.jpg',
+    type: 'webapp',
+    technologies: ['React', 'Next.js', 'Tailwind'],
   }
 ];
 
