@@ -60,6 +60,16 @@ const projects = [
     img: '/assets/projects/weather.jpg',
     type: 'webapp',
     technologies: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript'],
+  },
+  {
+    id: 'stripe',
+    title: 'Stripe',
+    desc: 'A simple website landing.',
+    link: 'https://github.com/lilo1egator/StripePage',
+    site: 'https://stripe-page-seven.vercel.app/',
+    img: '/assets/projects/sprite.jpg',
+    type: 'webapp',
+    technologies: ['React', 'TypeScript'],
   }
 ];
 
