@@ -67,7 +67,7 @@ const projects = [
     desc: 'A simple website landing.',
     link: 'https://github.com/lilo1egator/StripePage',
     site: 'https://stripe-page-seven.vercel.app/',
-    img: '/assets/projects/sprite.jpg',
+    img: '/assets/projects/image.png',
     type: 'webapp',
     technologies: ['React', 'TypeScript'],
   }
