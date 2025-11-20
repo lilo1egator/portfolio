@@ -7,7 +7,6 @@ const NUM_STARS_NEAR = 250;
 const STAR_COLOR = 0xffffff;
 
 const Starfield = () => {
-  // ВАЖЛИВО: ref = useRef(null), а не щось інше
   const mountRef = useRef(null);
 
   useEffect(() => {
@@ -32,7 +31,6 @@ const Starfield = () => {
 
     container.appendChild(renderer.domElement);
 
-    // ====== Функція для створення текстури круга (1 раз) ======
     function createCircleTexture() {
       const size = 64;
       const canvas = document.createElement('canvas');
@@ -190,7 +188,6 @@ const Starfield = () => {
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener('resize', handleResize);
-      // dispose + removeChild як ти вже робив
       if (mountRef.current?.contains(renderer.domElement)) {
         mountRef.current.removeChild(renderer.domElement);
       }
@@ -208,7 +205,6 @@ const Starfield = () => {
         zIndex: -1,
       }}
     >
-      {/* ВАЖЛИВО: ref={mountRef}, НЕ ref={mountRef.current} */}
       <div
         ref={mountRef}
         style={{
