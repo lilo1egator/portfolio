@@ -10,32 +10,43 @@ const About = () => {
   const textRef = useRef(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const el = textRef.current;
     if (!el) return;
 
     const intervalMs = 80;
     let i = 0;
-    let rafId;
+    let rafId = null;
+    let idleId = null;
     let lastTime = performance.now();
 
-    // невелика пауза перед стартом друку (щоб фон / курсор встигли запуститись)
-    const startTimeout = setTimeout(() => {
+    const startTyping = () => {
       const step = (now) => {
-        // чекаємо, поки пройде intervalMs між символами
         if (now - lastTime >= intervalMs) {
           lastTime = now;
           i += 1;
           el.textContent = TYPED_TEXT.slice(0, i);
-          if (i >= TYPED_TEXT.length) return; // друк закінчено
+          if (i >= TYPED_TEXT.length) return;
         }
         rafId = requestAnimationFrame(step);
       };
 
       rafId = requestAnimationFrame(step);
-    }, 200); // 200–300 мс – комфортно
+    };
+
+    if ("requestIdleCallback" in window) {
+      idleId = window.requestIdleCallback(startTyping, { timeout: 800 });
+    } else {
+      idleId = setTimeout(startTyping, 400);
+    }
 
     return () => {
-      clearTimeout(startTimeout);
+      if ("cancelIdleCallback" in window && typeof idleId === "number") {
+        window.cancelIdleCallback(idleId);
+      } else {
+        clearTimeout(idleId);
+      }
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
