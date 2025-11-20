@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import './CustomCursor.scss';
 
-const PARTICLE_LIFETIME = 600; // ms
-const PARTICLE_COUNT = 3; // менше частинок за рух
-const PARTICLE_LIMIT = 120; // максимум частинок у стані
+const PARTICLE_LIFETIME = 600;
+const PARTICLE_COUNT = 3;
+const PARTICLE_LIMIT = 100;
 
 function randomBetween(a, b) {
   return a + Math.random() * (b - a);

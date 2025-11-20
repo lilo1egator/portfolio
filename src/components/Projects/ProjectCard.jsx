@@ -1,10 +1,10 @@
 import { FaGithub } from 'react-icons/fa';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { SiReact, SiRedux, SiSass, SiHtml5, SiCss3, SiJavascript, SiTypescript, SiGit, SiGithub, SiFramer, SiBootstrap, SiTailwindcss, SiNodedotjs, SiFirebase, SiDocker, SiNpm, SiGulp, SiFigma } from 'react-icons/si';
 
-const MAX_ROTATE = 9; // градусів (збільшено для більшого ефекту)
+const MAX_ROTATE = 9;
 
 const techIcons = {
   React: SiReact,
@@ -92,8 +92,7 @@ const ProjectCard = ({ title, desc, link, site, img, technologies = [] }) => {
         }}
       />
       <div className="project-card__img">
-        {/* Заглушка для фото */}
-        {img ? <img src={img} alt={title} style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit'}} /> : <span>🖼️</span>}
+        {img ? <img src={img} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }} /> : <span>🖼️</span>}
       </div>
       <div className="project-card__content">
         <div className="project-card__title">{title}</div>
@@ -113,7 +112,7 @@ const ProjectCard = ({ title, desc, link, site, img, technologies = [] }) => {
         <div className="project-card__actions">
           {site && (
             <a href={site} className="project-card__btn project-card__btn--site" target="_blank" rel="noopener noreferrer">
-              <FaExternalLinkAlt size={16} style={{marginRight: 6, verticalAlign: 'middle'}} />
+              <FaExternalLinkAlt size={16} style={{ marginRight: 6, verticalAlign: 'middle' }} />
               Visit Site <span className="project-card__btn-arrow">→</span>
             </a>
           )}

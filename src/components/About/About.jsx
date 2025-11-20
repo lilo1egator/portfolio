@@ -1,5 +1,5 @@
 import './About.scss';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import SocialLinks from '../SocialLinks';
 
 const TYPED_TEXT = 'FRONTEND DEVELOPER';
@@ -12,12 +12,19 @@ const About = () => {
 
   useEffect(() => {
     let i = 0;
-    const interval = setInterval(() => {
+    let timeoutId;
+
+    const typeNext = () => {
       setTyped(TYPED_TEXT.slice(0, i + 1));
-      i++;
-      if (i === TYPED_TEXT.length) clearInterval(interval);
-    }, 70);
-    return () => clearInterval(interval);
+      i += 1;
+      if (i < TYPED_TEXT.length) {
+        timeoutId = setTimeout(typeNext, 70);
+      }
+    };
+
+    typeNext();
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
