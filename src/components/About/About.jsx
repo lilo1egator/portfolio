@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import SocialLinks from "../SocialLinks"
+import SocialLinks from "../SocialLinks";
 import "./About.scss";
 
 const TYPED_TEXT = "FRONTEND DEVELOPER";
@@ -8,24 +8,36 @@ const RESUME_LINK = "/resume.pdf";
 
 const About = () => {
   const textRef = useRef(null);
-  const cursorRef = useRef(null);
 
   useEffect(() => {
     const el = textRef.current;
     if (!el) return;
 
-    let i = 0;
     const intervalMs = 80;
+    let i = 0;
+    let rafId;
+    let lastTime = performance.now();
 
-    const id = setInterval(() => {
-      i++;
-      el.textContent = TYPED_TEXT.slice(0, i);
-      if (i >= TYPED_TEXT.length) {
-        clearInterval(id);
-      }
-    }, intervalMs);
+    // невелика пауза перед стартом друку (щоб фон / курсор встигли запуститись)
+    const startTimeout = setTimeout(() => {
+      const step = (now) => {
+        // чекаємо, поки пройде intervalMs між символами
+        if (now - lastTime >= intervalMs) {
+          lastTime = now;
+          i += 1;
+          el.textContent = TYPED_TEXT.slice(0, i);
+          if (i >= TYPED_TEXT.length) return; // друк закінчено
+        }
+        rafId = requestAnimationFrame(step);
+      };
 
-    return () => clearInterval(id);
+      rafId = requestAnimationFrame(step);
+    }, 200); // 200–300 мс – комфортно
+
+    return () => {
+      clearTimeout(startTimeout);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
@@ -36,7 +48,7 @@ const About = () => {
 
           <h1 className="hero-intro__typewriter hero-intro__typewriter--huge">
             <span ref={textRef}></span>
-            <span ref={cursorRef} className="hero-intro__cursor" aria-hidden="true"></span>
+            <span className="hero-intro__cursor" aria-hidden="true"></span>
           </h1>
 
           <div className="hero-intro__desc hero-intro__desc--big">
@@ -46,7 +58,12 @@ const About = () => {
         </div>
 
         <div className="hero-intro__actions">
-          <a href={RESUME_LINK} className="hero-intro__btn" target="_blank" rel="noopener noreferrer">
+          <a
+            href={RESUME_LINK}
+            className="hero-intro__btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Resume
           </a>
           <SocialLinks className="hero-intro__socials" />
