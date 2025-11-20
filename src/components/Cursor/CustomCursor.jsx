@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 import './CustomCursor.scss';
 
-const PARTICLE_LIFETIME = 600;
-const PARTICLE_COUNT = 3;
-const PARTICLE_LIMIT = 80;
+const PARTICLE_LIFETIME = 400;
+const PARTICLE_COUNT = 1.5;
+const PARTICLE_LIMIT = 50;
 
-const MAX_FPS = 45;
+const MAX_FPS = 30;
 const FRAME_INTERVAL = 1000 / MAX_FPS;
 
 function randomBetween(a, b) {
@@ -19,13 +19,12 @@ const CustomCursor = () => {
   const animationFrame = useRef();
   const lastEmitTime = useRef(0);
 
-  // =============== MOUSE MOVE + PARTICLES ===============
+  // рух курсора + спавн частинок
   useEffect(() => {
     const handleMouseMove = (e) => {
       const now = performance.now();
-
-      // throttle mouse events
-      if (now - lastEmitTime.current < 16) return;
+      // тротл подій миші
+      if (now - lastEmitTime.current < 20) return;
       lastEmitTime.current = now;
 
       if (cursorRef.current) {
@@ -52,12 +51,14 @@ const CustomCursor = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // =============== CANVAS RENDER ===============
+  // canvas-рендер
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const DPR = Math.min(window.devicePixelRatio || 1, 1.25);
+    const DPR = Math.min(window.devicePixelRatio || 1, 1.2);
 
     function resizeCanvas() {
       canvas.width = window.innerWidth * DPR;
@@ -69,8 +70,8 @@ const CustomCursor = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // ---- create cached neon sprite ----
-    const spriteSize = 48 * DPR;
+    // один раз малюємо неоновий кружок у спрайт
+    const spriteSize = 40 * DPR;
     const sprite = document.createElement('canvas');
     sprite.width = sprite.height = spriteSize;
     const sctx = sprite.getContext('2d');
@@ -78,17 +79,17 @@ const CustomCursor = () => {
     if (sctx) {
       const cx = spriteSize / 2;
       const cy = spriteSize / 2;
-      const radius = spriteSize / 2;
+      const r = spriteSize / 2;
 
-      const grad = sctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+      const grad = sctx.createRadialGradient(cx, cy, 0, cx, cy, r);
       grad.addColorStop(0, '#00ffe7');
       grad.addColorStop(1, '#5b8cff');
 
       sctx.fillStyle = grad;
       sctx.shadowColor = '#00ffe7';
-      sctx.shadowBlur = 16 * DPR;
+      sctx.shadowBlur = 8 * DPR; // менший blur
       sctx.beginPath();
-      sctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      sctx.arc(cx, cy, r, 0, Math.PI * 2);
       sctx.fill();
     }
 
@@ -102,26 +103,30 @@ const CustomCursor = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         const now = performance.now();
-        const half = sprite.width / 2;
 
         particles.current = particles.current.filter((p) => {
           const life = (now - p.created) / PARTICLE_LIFETIME;
           if (life > 1) return false;
 
-          const px = (p.x + p.dx * 30 * life) * DPR;
-          const py = (p.y + p.dy * 30 * life) * DPR;
+          const px = (p.x + p.dx * 25 * life) * DPR;
+          const py = (p.y + p.dy * 25 * life) * DPR;
           const size = p.size * (1 - life * 0.7) * DPR;
-          const scale = size / sprite.width;
 
-          ctx.save();
-          ctx.globalAlpha = 1 - life * 0.4;
-          ctx.translate(px, py);
-          ctx.scale(scale, scale);
-          ctx.drawImage(sprite, -half, -half);
-          ctx.restore();
+          const alpha = 1 - life * 0.5;
+
+          ctx.globalAlpha = alpha;
+          ctx.drawImage(
+            sprite,
+            px - size / 2,
+            py - size / 2,
+            size,
+            size
+          );
 
           return true;
         });
+
+        ctx.globalAlpha = 1;
       }
 
       animationFrame.current = requestAnimationFrame(render);

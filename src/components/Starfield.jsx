@@ -1,9 +1,9 @@
 import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
-const NUM_STARS_FAR = 4500;
-const NUM_STARS_MID = 2600;
-const NUM_STARS_NEAR = 250;
+const BASE_STARS_FAR = 4500;
+const BASE_STARS_MID = 2600;
+const BASE_STARS_NEAR = 250;
 const STAR_COLOR = 0xffffff;
 
 const Starfield = () => {
@@ -12,6 +12,13 @@ const Starfield = () => {
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
+
+    const isMobile = window.innerWidth <= 768;
+    const density = isMobile ? 0.35 : 1;
+
+    const NUM_STARS_FAR = Math.floor(BASE_STARS_FAR * density);
+    const NUM_STARS_MID = Math.floor(BASE_STARS_MID * density);
+    const NUM_STARS_NEAR = Math.floor(BASE_STARS_NEAR * density);
 
     let frameId;
 
